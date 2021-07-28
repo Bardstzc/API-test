@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "8927d160-3e75-41e5-9752-7efa12e8406d",
+		"name": "7.22",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Response body:Containstring",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\",function(){\r",
+							"pm.expect(pm.response.text()).to.include(\"名门正派\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.douban.com/search?q=%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96",
+					"protocol": "https",
+					"host": [
+						"www",
+						"douban",
+						"com"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Response body:Convert XML to JSON Object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(xml2Json(responseBody));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.weather.com.cn/weather1d/101020100.shtml#search",
+					"protocol": "http",
+					"host": [
+						"www",
+						"weather",
+						"com",
+						"cn"
+					],
+					"path": [
+						"weather1d",
+						"101020100.shtml"
+					],
+					"hash": "search"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Response body:is equal to a string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\",function(){\r",
+							"pm.expect(pm.response.text()).to.include(\"华山派大弟子\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.douban.com/search?q=%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96",
+					"protocol": "https",
+					"host": [
+						"www",
+						"douban",
+						"com"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Response body: JSON value check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\",function(){\r",
+							"    console.log(\"111\");\r",
+							"var JSONData = pm.response.json;\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.douban.com/search?q=%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96",
+					"protocol": "https",
+					"host": [
+						"www",
+						"douban",
+						"com"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "%E7%AC%91%E5%82%B2%E6%B1%9F%E6%B9%96"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Response headers:Content-Type head check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Content-Type is  hh\",function(){\r",
+							"pm.response.to.have.header(\"Server\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie.douban.com/subject/2155290/",
+					"protocol": "https",
+					"host": [
+						"movie",
+						"douban",
+						"com"
+					],
+					"path": [
+						"subject",
+						"2155290",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Response time is less than 1000ms",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"responseTime is less than 1000ms\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"responseCode is 200\",function(){\r",
+							"    pm.variables.get(200);\r",
+							"    //pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status code name has OK\",function(){\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"//pm.variables.get方式获取\r",
+							"pm.test(\"status code name has OK\",function(){\r",
+							"    pm.variables.get(\"OK\");\r",
+							"});\r",
+							"//pm.variables.get方式获取\r",
+							"pm.test(\"POST babba\",function(){\r",
+							"   //pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+							"    pm.variables.get([200,201,202]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie.douban.com/celebrity/1019677/",
+					"protocol": "https",
+					"host": [
+						"movie",
+						"douban",
+						"com"
+					],
+					"path": [
+						"celebrity",
+						"1019677",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
